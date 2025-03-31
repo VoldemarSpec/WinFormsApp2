@@ -7,8 +7,8 @@ namespace WinFormsApp2
         int questionindex = 0;
         int points = 0;
 
-        private List<Question> questions; 
-        
+        private List<Question> questions;
+
         public Form1()
         {
             InitializeComponent();
@@ -18,23 +18,51 @@ namespace WinFormsApp2
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             questionindex++;
             showQuestions();
-            
-
         }
+
+
+
+
+
         private void showQuestions()
         {
+            var radioButtons = this.Controls.OfType<RadioButton>().ToList();
             Question question = questions[questionindex];
             label2.Text = question.Text;
-            radioButton1.Text = question.Answers[0].Text;
-            radioButton2.Text = question.Answers[1].Text;
-            radioButton3.Text = question.Answers[2].Text;
+            if (question.IsMultipleChoice && )
+            {
+                foreach (var radioButton in radioButtons)
+                {
+                    CheckBox checkBox = new CheckBox
+                    {
+                        Text = radioButton.Text,
+                        Location = radioButton.Location,
+                        Size = new Size(radioButton.Width + 10, radioButton.Height),
+                        Checked = radioButton.Checked
+                    };
+
+
+                    this.Controls.Remove(radioButton);
+                    this.Controls.Add(checkBox);
+                }
+            }
+            else
+            {
+                radioButton1.Text = question.Answers[0].Text;
+                radioButton2.Text = question.Answers[1].Text;
+                radioButton3.Text = question.Answers[2].Text;
+
+
+            }
+
+
         }
         private void LoadQuestions()
         {
@@ -94,6 +122,7 @@ namespace WinFormsApp2
             new Answer("object", true),
             new Answer("int", false)
         }),
+
         new Question("Which method is used to start a thread in C#?", false, new List<Answer>
         {
             new Answer("Start()", true),
@@ -103,27 +132,7 @@ namespace WinFormsApp2
             };
         }
 
-        private void getPoints() {
-            int correctAnswers = 0;
-            points += (radioButton1.Checked && questions[questionindex].Answers[0].IsCorrect) ? 1 : 0;
-            points += (radioButton2.Checked && questions[questionindex].Answers[1].IsCorrect) ? 1 : 0;
-            points += (radioButton3.Checked && questions[questionindex].Answers[2].IsCorrect) ? 1 : 0;
-            for (int i = 0; i < questions[questionindex].Answers.Count; i++)
-            {
-                if (questions[questionindex].Answers[i].IsCorrect)
-                {
-                  
-                }
-            }
 
-
-
-
-
-
-
-        }
 
     }
-    }
-
+}
