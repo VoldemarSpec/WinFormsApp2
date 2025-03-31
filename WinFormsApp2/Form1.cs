@@ -9,6 +9,7 @@ namespace WinFormsApp2
 
         private List<Question> questions;
 
+
         public Form1()
         {
             InitializeComponent();
@@ -28,42 +29,40 @@ namespace WinFormsApp2
         }
 
 
-
-
-
         private void showQuestions()
         {
-            var radioButtons = this.Controls.OfType<RadioButton>().ToList();
             Question question = questions[questionindex];
+
             label2.Text = question.Text;
-            if (question.IsMultipleChoice && )
+
+            if (question.IsMultipleChoice)
             {
-                foreach (var radioButton in radioButtons)
-                {
-                    CheckBox checkBox = new CheckBox
-                    {
-                        Text = radioButton.Text,
-                        Location = radioButton.Location,
-                        Size = new Size(radioButton.Width + 10, radioButton.Height),
-                        Checked = radioButton.Checked
-                    };
+                // Показываем CheckBox, скрываем RadioButton
+                groupBoxSingleChoice.Visible = false;
+                groupBoxMultipleChoice.Visible = true;
 
-
-                    this.Controls.Remove(radioButton);
-                    this.Controls.Add(checkBox);
-                }
+                checkBox1.Text = question.Answers[0].Text;
+                checkBox2.Text = question.Answers[1].Text;
+                checkBox3.Text = question.Answers[2].Text;
             }
             else
             {
+                // Показываем RadioButton, скрываем CheckBox
+                groupBoxSingleChoice.Visible = true;
+                groupBoxMultipleChoice.Visible = false;
+
                 radioButton1.Text = question.Answers[0].Text;
                 radioButton2.Text = question.Answers[1].Text;
                 radioButton3.Text = question.Answers[2].Text;
-
-
             }
-
-
         }
+
+
+
+
+
+
+
         private void LoadQuestions()
         {
             questions = new List<Question>
@@ -132,7 +131,19 @@ namespace WinFormsApp2
             };
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
 
+        }
 
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
