@@ -24,20 +24,51 @@ namespace WinFormsApp2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            questionindex++;
-            showQuestions();
+            countCorrectAnswers();
+            if (questionindex == questions.Count - 1)
+            {
+                button1.Visible = false;
+                groupBoxMultipleChoice.Visible = false;
+                groupBoxSingleChoice.Visible = false;
+                label2.Visible = false;
+                label3.Visible = true;
+                if (points == questions.Count)
+                {
+                    label3.Text = "Congratulations! You got all the answers right!";
+                }
+                else if (points == 1)
+                {
+                    label3.Text = "You got " + points + " point out of " + questions.Count;
+                }
+                else {
+                    label3.Text = "You got " + points + " points out of " + questions.Count;
+                }
+            }
+            else
+            {
+                
+                questionindex++;
+                showQuestions();
+            }
+
         }
 
 
         private void showQuestions()
         {
+            radioButton1.Checked = false;
+            radioButton2.Checked = false;
+            radioButton3.Checked = false;
+            checkBox1.Checked = false;
+            checkBox2.Checked = false;
+            checkBox3.Checked = false;
             Question question = questions[questionindex];
 
             label2.Text = question.Text;
 
             if (question.IsMultipleChoice)
             {
-                // Показываем CheckBox, скрываем RadioButton
+
                 groupBoxSingleChoice.Visible = false;
                 groupBoxMultipleChoice.Visible = true;
 
@@ -47,7 +78,7 @@ namespace WinFormsApp2
             }
             else
             {
-                // Показываем RadioButton, скрываем CheckBox
+                
                 groupBoxSingleChoice.Visible = true;
                 groupBoxMultipleChoice.Visible = false;
 
@@ -130,19 +161,50 @@ namespace WinFormsApp2
         })
             };
         }
-
-        private void Form1_Load(object sender, EventArgs e)
+        private void countCorrectAnswers()
         {
 
-        }
 
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
 
-        }
+            if (questions[questionindex].IsMultipleChoice)
+            {
+                int numberOfCoorect = questions[questionindex].Answers.Count(x => x.IsCorrect == true);
+                int tempCorAnswers = 0;
+                if (checkBox1.Checked && questions[questionindex].Answers[0].IsCorrect)
+                {
+                    tempCorAnswers++;
+                }
+                if (checkBox2.Checked && questions[questionindex].Answers[1].IsCorrect)
+                {
+                    tempCorAnswers++;
+                }
+                if (checkBox3.Checked && questions[questionindex].Answers[2].IsCorrect)
+                {
+                    tempCorAnswers++;
+                }
+                if (tempCorAnswers == numberOfCoorect)
+                {
+                    points++;
+                }
+            }
+            else
+            {
+                if (radioButton1.Checked && questions[questionindex].Answers[0].IsCorrect)
+                {
+                    points++;
+                }
+                if (radioButton2.Checked && questions[questionindex].Answers[1].IsCorrect)
+                {
+                    points++;
+                }
+                if (radioButton3.Checked && questions[questionindex].Answers[2].IsCorrect)
+                {
+                    points++;
+                }
+            }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
+
+
 
         }
     }

@@ -32,13 +32,14 @@
             button1 = new Button();
             label2 = new Label();
             groupBoxSingleChoice = new GroupBox();
+            radioButton3 = new RadioButton();
+            radioButton2 = new RadioButton();
+            radioButton1 = new RadioButton();
             groupBoxMultipleChoice = new GroupBox();
             checkBox3 = new CheckBox();
             checkBox2 = new CheckBox();
             checkBox1 = new CheckBox();
-            radioButton3 = new RadioButton();
-            radioButton2 = new RadioButton();
-            radioButton1 = new RadioButton();
+            label3 = new Label();
             groupBoxSingleChoice.SuspendLayout();
             groupBoxMultipleChoice.SuspendLayout();
             SuspendLayout();
@@ -68,7 +69,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Circular Spotify Text Bold", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(41, 141);
+            label2.Location = new Point(12, 167);
             label2.MaximumSize = new Size(400, 45);
             label2.MinimumSize = new Size(600, 45);
             label2.Name = "label2";
@@ -86,53 +87,6 @@
             groupBoxSingleChoice.Size = new Size(300, 307);
             groupBoxSingleChoice.TabIndex = 6;
             groupBoxSingleChoice.TabStop = false;
-            // 
-            // groupBoxMultipleChoice
-            // 
-            groupBoxMultipleChoice.Controls.Add(checkBox3);
-            groupBoxMultipleChoice.Controls.Add(checkBox2);
-            groupBoxMultipleChoice.Controls.Add(checkBox1);
-            groupBoxMultipleChoice.Location = new Point(12, 225);
-            groupBoxMultipleChoice.Name = "groupBoxMultipleChoice";
-            groupBoxMultipleChoice.Size = new Size(300, 315);
-            groupBoxMultipleChoice.TabIndex = 7;
-            groupBoxMultipleChoice.TabStop = false;
-            groupBoxMultipleChoice.Visible = false;
-            groupBoxMultipleChoice.Enter += groupBox2_Enter;
-            // 
-            // checkBox3
-            // 
-            checkBox3.AutoSize = true;
-            checkBox3.Location = new Point(26, 216);
-            checkBox3.MinimumSize = new Size(150, 29);
-            checkBox3.Name = "checkBox3";
-            checkBox3.Size = new Size(150, 29);
-            checkBox3.TabIndex = 2;
-            checkBox3.Text = "checkBox3";
-            checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            checkBox2.AutoSize = true;
-            checkBox2.Location = new Point(26, 144);
-            checkBox2.MinimumSize = new Size(150, 29);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(150, 29);
-            checkBox2.TabIndex = 1;
-            checkBox2.Text = "checkBox2";
-            checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(26, 72);
-            checkBox1.MinimumSize = new Size(150, 29);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(150, 29);
-            checkBox1.TabIndex = 0;
-            checkBox1.Text = "checkBox1";
-            checkBox1.UseVisualStyleBackColor = true;
-            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
             // 
             // radioButton3
             // 
@@ -167,11 +121,69 @@
             radioButton1.Text = "radioButton1";
             radioButton1.UseVisualStyleBackColor = true;
             // 
+            // groupBoxMultipleChoice
+            // 
+            groupBoxMultipleChoice.Controls.Add(checkBox3);
+            groupBoxMultipleChoice.Controls.Add(checkBox2);
+            groupBoxMultipleChoice.Controls.Add(checkBox1);
+            groupBoxMultipleChoice.Location = new Point(12, 225);
+            groupBoxMultipleChoice.Name = "groupBoxMultipleChoice";
+            groupBoxMultipleChoice.Size = new Size(300, 315);
+            groupBoxMultipleChoice.TabIndex = 7;
+            groupBoxMultipleChoice.TabStop = false;
+            groupBoxMultipleChoice.Visible = false;
+            // 
+            // checkBox3
+            // 
+            checkBox3.AutoSize = true;
+            checkBox3.Location = new Point(26, 216);
+            checkBox3.MinimumSize = new Size(150, 29);
+            checkBox3.Name = "checkBox3";
+            checkBox3.Size = new Size(150, 29);
+            checkBox3.TabIndex = 2;
+            checkBox3.Text = "checkBox3";
+            checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            checkBox2.AutoSize = true;
+            checkBox2.Location = new Point(26, 144);
+            checkBox2.MinimumSize = new Size(150, 29);
+            checkBox2.Name = "checkBox2";
+            checkBox2.Size = new Size(150, 29);
+            checkBox2.TabIndex = 1;
+            checkBox2.Text = "checkBox2";
+            checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(26, 72);
+            checkBox1.MinimumSize = new Size(150, 29);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(150, 29);
+            checkBox1.TabIndex = 0;
+            checkBox1.Text = "checkBox1";
+            checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Circular Spotify Text Bold", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(61, 122);
+            label3.MinimumSize = new Size(600, 100);
+            label3.Name = "label3";
+            label3.Size = new Size(600, 100);
+            label3.TabIndex = 8;
+            label3.Text = "label3";
+            label3.Visible = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(673, 730);
+            Controls.Add(label3);
             Controls.Add(groupBoxMultipleChoice);
             Controls.Add(groupBoxSingleChoice);
             Controls.Add(label2);
@@ -179,7 +191,6 @@
             Controls.Add(label1);
             Name = "Form1";
             Text = "Form1";
-            Load += Form1_Load;
             groupBoxSingleChoice.ResumeLayout(false);
             groupBoxSingleChoice.PerformLayout();
             groupBoxMultipleChoice.ResumeLayout(false);
@@ -200,5 +211,6 @@
         private CheckBox checkBox3;
         private CheckBox checkBox2;
         private CheckBox checkBox1;
+        private Label label3;
     }
 }
